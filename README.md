@@ -1,2 +1,9 @@
-# literate-coding-parser
-A node based literate coding parser
+# Literate Coding Parser
+
+> *A node based literate coding parser*
+
+---
+
+A new way to code! Code by writing documentation!
+
+
