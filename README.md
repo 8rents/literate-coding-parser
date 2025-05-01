@@ -12,19 +12,25 @@
 ## About Literate Coding
 
 > *The following about section is taken from the [Wikipedia article on Literate Programming](https://en.m.wikipedia.org/wiki/Literate_programming)*
+>
+> ---
+> 
+> Literate programming is writing out the program logic in a human language with included (separated by a primitive markup) code snippets and macros.
+> It was first introduced in 1984 by Donald Knuth, who intended it to create programs that were suitable literature for human beings. He implemented it at Stanford University as a part of his research on algorithms and digital typography.
 
-Literate programming is writing out the program logic in a human language with included (separated by a primitive markup) code snippets and macros.
+---
 
-It was first introduced in 1984 by Donald Knuth, who intended it to create programs that were suitable literature for human beings. He implemented it at Stanford University as a part of his research on algorithms and digital typography.
 
-### File Extensions
+
+## File Extensions
 
 Since we are writing a **literate javascript file**, `.js` is used and then appended with `.lit` after the codes file extension. 
 
 **Note:** *That since the file extension is `.js` the compiler will know all the code is javascript, so we won't need to specify the language in any of the markdown code fences.*
 
+---
 
-### YAML Front matter
+### Configuration with YAML Front matter
 
 Each file is started with YAML front matter. Then you write all about how the file works, what it does, and eventually within the markdown write a code snippet that you will document.
 
@@ -44,7 +50,7 @@ This example `app.js` file is the main application file of the hello world of th
 
 When coding using literate coding you write all of your code within markdown files. 
 
-### `app.js.lit`
+`app.js.lit`
 
 ~~~markdown
 # `app.js` (v1.0)
@@ -119,11 +125,12 @@ This is a literate JavaScript file that has the code for an express hello world 
 
 ## File Compilation
 
-Two types of files are produced when a `.lit` file is compiled.
+Two types of files are produced when a `.lit` file is compiled. 
 
-### Source Code Files: `app.js`
+- Application files - These are files for the computer to read.
+- Documentation files - These are files for the end user to read. 
 
-
+### Application Files Compiled: `app.js`
 
 ```javascript
 const express = require('express')
@@ -141,15 +148,15 @@ app.listen(port, () => {
 
 All of the markdown is stripped away leaving just the JavaScript.
 
-#### app.js.md will look like this:
+### Documentation Files Compiled: `app.js.md`
 
 ![markdown-example](markdown-example.png)
 
-## Configuration using YAML
+## Configuring compiled literate output using YAML
 
 Using a yaml file we tell the compiler where to compile the files to:
 
-### `config.yml`
+### Global configuration file: `config.yml`
 
 The `config.yml` file is located in the root directory of a literate coding project. 
 
@@ -201,7 +208,7 @@ lit:
         stylesheet: styles.css
 ```
 
-##### This will create the directory structure:
+#### This will create the directory structure:
 
 ```bash
 express-hello-world/
@@ -261,12 +268,16 @@ Check the [list of modules](modules/README.md) in the express-hello-world applic
 
 Indivudual literate files can be configured using yaml frontmatter. 
 
-Here is an example of tweaking just the `app.js` yaml so instead of stripping all markdown out of the `.js` files only the headers remain in the code.
+Here is an example of tweaking just the `app.js` yaml so instead of stripping all markdown out of the `.js` files only the headers remain in the code. 
+
+Atm the top of `app.js.lit`
 
 ```yaml
+---
 lit:
   compile:
     comments: headers
+---
 ```
 
 #### Compiled `app.js` javascript file (With comment headers enabled)
