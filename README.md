@@ -46,8 +46,8 @@ When coding using literate coding you write all of your code within markdown fil
 
 ### `app.js.lit`
 
-```markdown
-# app.js (v1.0)
+````markdown
+# `app.js` (v1.0)
 
 > *The main entry point for the application*
 
@@ -61,19 +61,21 @@ When coding using literate coding you write all of your code within markdown fil
 
 `app.js` starts by defining three variables as constants. 
 
-1. the express application itself
+#1 the express application itself
 
-`const express = require('express')`
-
-2. The instance of the express app
-
+```javascript
+const express = require('express')
 ```
+
+#2 The instance of the express app
+
+```javascript
 const app = express()
 ```
 
-3. The port that the application will run on
+#3 The port that the application will run on
 
-```
+```javascript
 const port = 3000
 ```
 
@@ -93,7 +95,7 @@ The **result (`res`)** is what should happen if the request is met. The result t
 
 The first and only get request is the index page. It's defined with a single `/`. It returns 'Hello World!'
 
-```
+```javascript
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
@@ -103,11 +105,12 @@ app.get('/', (req, res) => {
 
 After defining the routing we tell the application what port to listen to with `app.listen`. We log to the console 'Example app listening on port 3000'
 
-```
+```javascript
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
 ```
+
 ````
 
 This is a literate JavaScript file that has the code for an express hello world app.
@@ -134,13 +137,13 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
-```
+````
 
 All of the markdown is stripped away leaving just the JavaScript.
 
 #### app.js.md will look like this:
 
-![markdown-example](./markdown-example.png)
+![markdown-example](markdown-example.png)
 
 ## Configuration using YAML
 
